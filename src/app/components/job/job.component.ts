@@ -16,6 +16,5 @@ export class JobComponent {
 
   constructor() {
     this.job.getAllJobs().subscribe((response) => (this.allJobs = response));
-    this.job.getDetailedJob(75278).subscribe((value) => console.log(value));
   }
 }
