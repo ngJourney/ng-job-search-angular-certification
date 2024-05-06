@@ -10,8 +10,8 @@ import { IDetailedJob } from '../interfaces/IDetailedJob';
 export class JobService {
   private http = inject(HttpClient);
 
-  getAllJobs(): Observable<IBaseJob> {
-    return this.http.get('/jobs') as Observable<IBaseJob>;
+  getAllJobs(): Observable<IBaseJob[]> {
+    return this.http.get('/jobs') as Observable<IBaseJob[]>;
   }
 
   getDetailedJob(id: string | number): Observable<IDetailedJob> {

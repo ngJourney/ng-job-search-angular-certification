@@ -1,0 +1,9 @@
+.job-shell {
+  display: flex;
+  justify-content: space-between;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+}
