@@ -4,9 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-job-search',
   standalone: true,
   imports: [],
-  templateUrl: './job-search.component.html',
-  styleUrl: './job-search.component.css'
+  templateUrl: './job.component.html',
+  styleUrl: './job.component.css',
 })
-export class JobSearchComponent {
-
-}
+export class JobComponent {}

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JobSearchComponent } from './job-search.component';
+import { JobSearchComponent } from './job.component';
 
 describe('JobSearchComponent', () => {
   let component: JobSearchComponent;
@@ -8,10 +8,9 @@ describe('JobSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [JobSearchComponent]
-    })
-    .compileComponents();
-    
+      imports: [JobSearchComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(JobSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,4 +1,4 @@
 import { Routes } from '@angular/router';
-import { JobSearchComponent } from './components/job-search/job-search.component';
+import { JobComponent } from './components/job/job.component';
 
-export const routes: Routes = [{ path: 'jobs', component: JobSearchComponent }];
+export const routes: Routes = [{ path: 'jobs', component: JobComponent }];
