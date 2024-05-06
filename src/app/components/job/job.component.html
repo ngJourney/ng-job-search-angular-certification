@@ -1,9 +1,9 @@
-<ng-container *ngFor="let item of allJobs">
+<ng-container *ngFor="let job of allJobs">
   <div class="job-shell">
-    <img [src]="item.companyLogo" [alt]="item.companyName + ' logo'" />
-    <div>{{ item.title }}</div>
-    <div>Company: {{ item.companyName }}</div>
-    <div>Reference: {{ item.reference }}</div>
+    <img [src]="job.companyLogo" [alt]="job.companyName + ' logo'" />
+    <div>{{ job.title }}</div>
+    <div>Company: {{ job.companyName }}</div>
+    <div>Reference: {{ job.reference }}</div>
     <br />
   </div>
 </ng-container>
