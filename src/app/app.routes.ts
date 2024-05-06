@@ -17,5 +17,12 @@ export const routes: Routes = [
         (module) => module.DetailedJobComponent
       ),
   },
+  {
+    path: 'favorites',
+    loadComponent: () =>
+      import('./components/favorite-job/favorite-job.component').then(
+        (module) => module.FavoriteJobComponent
+      ),
+  },
   { path: '**', redirectTo: '/jobs' },
 ];
