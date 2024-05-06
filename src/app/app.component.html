@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<div class="wrapper">Find Your Job
+  <ul>
+    <button [routerLink]="['/jobs']" routerLinkActive="active">
+      Jobs
+    </button>
+    <button [routerLink]="['/favorites']" routerLinkActive="active">
+      Favorites
+    </button>
+  </ul>
+</div>
+<div class="outlet-wrapper">
+  <router-outlet></router-outlet>
+</div>
