@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IBaseJob } from '../interfaces/IBaseJob';
 
 @Injectable({
@@ -6,7 +6,6 @@ import { IBaseJob } from '../interfaces/IBaseJob';
 })
 export class FavoriteJobsService {
   private readonly localKey = 'favoriteJobs';
-  protected favorites = signal<IBaseJob[]>([]);
 
   getFavorites(): IBaseJob[] {
     const favorites = localStorage.getItem(this.localKey);
@@ -26,8 +25,6 @@ export class FavoriteJobsService {
       favorites.push(job);
 
       localStorage.setItem(this.localKey, JSON.stringify(favorites));
-
-      this.favorites.set(favorites);
     }
   }
 
@@ -37,7 +34,6 @@ export class FavoriteJobsService {
       const filtered = favorites.filter((value) => value.id !== job.id);
 
       localStorage.setItem(this.localKey, JSON.stringify(filtered));
-      this.favorites.set(favorites);
     }
   }
 

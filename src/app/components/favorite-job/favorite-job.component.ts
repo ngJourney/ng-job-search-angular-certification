@@ -1,6 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { JobComponent } from '../job/job.component';
 import { FavoriteJobsService } from '../../services/favorite-jobs.service';
+import { IBaseJob } from '../../interfaces/IBaseJob';
 
 @Component({
   selector: 'app-favorite-job',
@@ -11,4 +12,9 @@ import { FavoriteJobsService } from '../../services/favorite-jobs.service';
 })
 export class FavoriteJobComponent {
   protected readonly favoriteJobsService = inject(FavoriteJobsService);
+  protected favorites = signal<IBaseJob[]>([]);
+
+  constructor() {
+    this.favorites.set(this.favoriteJobsService.getFavorites());
+  }
 }

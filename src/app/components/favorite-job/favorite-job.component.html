@@ -1,4 +1,5 @@
-<app-job
-  [allJobs]="favoriteJobsService.getFavorites()"
-  [showStar]="false"
-></app-job>
+@if(favorites().length) {
+<app-job [allJobs]="favorites()" [showStar]="false"></app-job>
+} @else {
+<div>No favorite(s) selected.</div>
+}

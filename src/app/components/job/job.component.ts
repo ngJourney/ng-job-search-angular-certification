@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { JobService } from '../../services/job.service';
 import { IBaseJob } from '../../interfaces/IBaseJob';
 import { CommonModule } from '@angular/common';
@@ -11,14 +11,18 @@ import { FavoriteJobsService } from '../../services/favorite-jobs.service';
   templateUrl: './job.component.html',
   styleUrl: './job.component.css',
 })
-export class JobComponent {
+export class JobComponent implements OnInit {
   protected readonly job = inject(JobService);
   protected readonly favoriteJobsService = inject(FavoriteJobsService);
   @Input() allJobs: IBaseJob[] = [];
   @Input() showStar: boolean = true;
 
-  constructor() {
+  ngOnInit(): void {
     const favorites = this.favoriteJobsService.getFavorites();
+
+    if (this.allJobs.length > 0) {
+      return;
+    }
 
     this.job.getAllJobs().subscribe((response) => {
       if (favorites.length) {
