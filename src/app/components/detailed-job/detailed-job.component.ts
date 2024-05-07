@@ -4,7 +4,8 @@ import { IDetailedJob } from '../../interfaces/IDetailedJob';
 import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { EMPTY, catchError } from 'rxjs';
+import { EMPTY, catchError, map } from 'rxjs';
+import { FavoriteJobsService } from '../../services/favorite-jobs.service';
 
 @Component({
   selector: 'app-detailed-job',
@@ -17,6 +18,7 @@ export class DetailedJobComponent {
   protected readonly job = inject(JobService);
   protected readonly activatedRoute = inject(ActivatedRoute);
   protected detailedJob: IDetailedJob = {} as IDetailedJob;
+  #favoriteJobsService = inject(FavoriteJobsService);
 
   constructor() {
     this.job
@@ -25,6 +27,12 @@ export class DetailedJobComponent {
         catchError(() => {
           window.location.reload;
           return EMPTY;
+        }),
+        map((value) => {
+          return {
+            ...value,
+            favorite: this.#favoriteJobsService.hasFavorite(value),
+          };
         })
       )
       .subscribe((value) => {
