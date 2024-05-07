@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { JobService } from '../../services/job.service';
 import { IDetailedJob } from '../../interfaces/IDetailedJob';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-detailed-job',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './detailed-job.component.html',
   styleUrl: './detailed-job.component.css',
 })
