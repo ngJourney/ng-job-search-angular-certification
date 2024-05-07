@@ -3,11 +3,12 @@ import { JobService } from '../../services/job.service';
 import { IDetailedJob } from '../../interfaces/IDetailedJob';
 import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-detailed-job',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, DatePipe],
   templateUrl: './detailed-job.component.html',
   styleUrl: './detailed-job.component.css',
 })

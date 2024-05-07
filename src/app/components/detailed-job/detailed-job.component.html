@@ -10,7 +10,7 @@
   Industries:
   <span [innerHTML]="detailedJob.industries"></span>
 </div>
-<div>Published: {{ detailedJob.publishDate }}</div>
+<div>Published: {{ detailedJob.publishDate | date : "shortDate" }}</div>
 <div>Location: {{ detailedJob.location }}</div>
 <div>Reference: {{ detailedJob.reference }}</div>
 <div>
