@@ -15,6 +15,8 @@ export class DetailedJobComponent {
   protected detailedJob: IDetailedJob = {} as IDetailedJob;
 
   constructor() {
-    this.job.getDetailedJob(75278).subscribe((value) => console.log(value));
+    this.job.getDetailedJob(75278).subscribe((value) => {
+      this.detailedJob = value;
+    });
   }
 }
