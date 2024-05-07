@@ -1,9 +1,19 @@
 <button routerLink="/jobs">Back</button>
-<div>{{ detailedJob.title }}</div>
-<div>{{ detailedJob.companyName }}</div>
-<img [src]="detailedJob.companyLogo" [alt]="detailedJob.companyName + ' logo'" />
-<div>{{ detailedJob.industries }}</div>
-<div>{{ detailedJob.publishDate }}</div>
-<div>{{ detailedJob.location }}</div>
-<div>{{ detailedJob.reference }}</div>
-<div [innerHTML]="detailedJob.description"></div>
+<div class="company-title">
+  <img
+    [src]="detailedJob.companyLogo"
+    [alt]="detailedJob.companyName + ' logo'"
+  />
+  <div>{{ detailedJob.companyName }} - {{ detailedJob.title }}</div>
+</div>
+<div>
+  Industries:
+  <span [innerHTML]="detailedJob.industries"></span>
+</div>
+<div>Published: {{ detailedJob.publishDate }}</div>
+<div>Location: {{ detailedJob.location }}</div>
+<div>Reference: {{ detailedJob.reference }}</div>
+<div>
+  Description:
+  <div [innerHTML]="detailedJob.description"></div>
+</div>
