@@ -3,11 +3,12 @@ import { JobService } from '../../services/job.service';
 import { IBaseJob } from '../../interfaces/IBaseJob';
 import { CommonModule } from '@angular/common';
 import { FavoriteJobsService } from '../../services/favorite-jobs.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-job',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './job.component.html',
   styleUrl: './job.component.css',
 })

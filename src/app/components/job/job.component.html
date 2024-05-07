@@ -1,7 +1,7 @@
 <ng-container *ngFor="let job of allJobs">
   <div class="job-shell">
     <img [src]="job.companyLogo" [alt]="job.companyName + ' logo'" />
-    <div>{{ job.title }}</div>
+    <a [routerLink]="['/jobs', job.id]">{{ job.title }}</a>
     <div>Company: {{ job.companyName }}</div>
     <div>Reference: {{ job.reference }}</div>
     @if(showStar) {
