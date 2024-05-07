@@ -13,7 +13,7 @@
 <div>Published: {{ detailedJob.publishDate | date : "shortDate" }}</div>
 <div>Location: {{ detailedJob.location }}</div>
 <div>Reference: {{ detailedJob.reference }}</div>
-<div>
+<div class="description">
   Description:
   <div [innerHTML]="detailedJob.description"></div>
 </div>

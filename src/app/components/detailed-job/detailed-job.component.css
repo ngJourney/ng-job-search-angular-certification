@@ -12,3 +12,7 @@ img {
   font-size: 2em;
   margin: 0 0 1.5em 1em;
 }
+
+.description {
+  max-width: 800px;
+}
