@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { JobService } from '../../services/job.service';
 import { IDetailedJob } from '../../interfaces/IDetailedJob';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detailed-job',
@@ -12,11 +13,14 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class DetailedJobComponent {
   protected readonly job = inject(JobService);
+  protected readonly activatedRoute = inject(ActivatedRoute);
   protected detailedJob: IDetailedJob = {} as IDetailedJob;
 
   constructor() {
-    this.job.getDetailedJob(75278).subscribe((value) => {
-      this.detailedJob = value;
-    });
+    this.job
+      .getDetailedJob(this.activatedRoute.snapshot.params['id'])
+      .subscribe((value) => {
+        this.detailedJob = value;
+      });
   }
 }
