@@ -4,6 +4,7 @@ import { IBaseJob } from '../../interfaces/IBaseJob';
 import { CommonModule } from '@angular/common';
 import { FavoriteJobsService } from '../../services/favorite-jobs.service';
 import { RouterModule } from '@angular/router';
+import { EMPTY, catchError } from 'rxjs';
 
 @Component({
   selector: 'app-job',
@@ -25,18 +26,26 @@ export class JobComponent implements OnInit {
       return;
     }
 
-    this.job.getAllJobs().subscribe((response) => {
-      if (favorites.length) {
-        this.allJobs = response;
-        response.forEach((obj) => {
-          if (favorites.findIndex((value) => obj.id === value.id) !== -1) {
-            obj.favorite = true;
-          }
-        });
-      } else {
-        this.allJobs = response;
-      }
-    });
+    this.job
+      .getAllJobs()
+      .pipe(
+        catchError(() => {
+          window.location.reload();
+          return EMPTY;
+        })
+      )
+      .subscribe((response) => {
+        if (favorites.length) {
+          this.allJobs = response;
+          response.forEach((obj) => {
+            if (favorites.findIndex((value) => obj.id === value.id) !== -1) {
+              obj.favorite = true;
+            }
+          });
+        } else {
+          this.allJobs = response;
+        }
+      });
   }
 
   removeClassAndFavorite(job: IBaseJob) {

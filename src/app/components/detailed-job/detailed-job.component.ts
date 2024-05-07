@@ -4,6 +4,7 @@ import { IDetailedJob } from '../../interfaces/IDetailedJob';
 import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { EMPTY, catchError } from 'rxjs';
 
 @Component({
   selector: 'app-detailed-job',
@@ -20,6 +21,12 @@ export class DetailedJobComponent {
   constructor() {
     this.job
       .getDetailedJob(this.activatedRoute.snapshot.params['id'])
+      .pipe(
+        catchError(() => {
+          window.location.reload;
+          return EMPTY;
+        })
+      )
       .subscribe((value) => {
         this.detailedJob = value;
       });
