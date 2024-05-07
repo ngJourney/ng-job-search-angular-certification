@@ -1,22 +1,24 @@
 <ng-container *ngFor="let job of allJobs">
   <div class="job-shell">
-    <img [src]="job.companyLogo" [alt]="job.companyName + ' logo'" />
-    <a [routerLink]="['/jobs', job.id]">{{ job.title }}</a>
-    <div>Company: {{ job.companyName }}</div>
-    <div>Reference: {{ job.reference }}</div>
-    @if(showStar) {
-    <span
-      (click)="
-        !job.favorite
-          ? favoriteJobsService.setFavorite(job)
-          : removeClassAndFavorite(job)
-      "
-      id="star-{{ job.id }}"
-      class="icon-star"
-      [ngClass]="job.favorite ? 'active-star' : ''"
-    ></span>
-    }
-
-    <br />
+    <div class="logo-title">
+      <img [src]="job.companyLogo" [alt]="job.companyName + ' logo'" />
+      <a [routerLink]="['/jobs', job.id]">{{ job.title }}</a>
+      @if(showStar) {
+      <span
+        (click)="
+          !job.favorite
+            ? favoriteJobsService.setFavorite(job)
+            : removeClassAndFavorite(job)
+        "
+        id="star-{{ job.id }}"
+        class="icon-star"
+        [ngClass]="job.favorite ? 'active-star' : ''"
+      ></span>
+      }
+    </div>
+    <div class="company-reference">
+      <span>Company: {{ job.companyName }}</span>
+      <span>Reference: {{ job.reference }}</span>
+    </div>
   </div>
 </ng-container>

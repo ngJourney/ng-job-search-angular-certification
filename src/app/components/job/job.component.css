@@ -1,13 +1,36 @@
 .job-shell {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .job-shell > a:hover {
   cursor: pointer;
 }
 
+.job-shell > span {
+  display: flex;
+  margin-left: auto;
+}
+
+.logo-title > span {
+  display: flex;
+  margin-left: auto;
+}
+
 img {
   width: 40px;
   height: 40px;
+}
+
+.company-reference, .logo-title {
+  display: flex;
+  flex-direction: row;
+}
+
+.company-reference :last-child {
+  margin-left: 1em;
+}
+
+.company-reference {
+  margin-bottom: 1em;
 }
