@@ -4,7 +4,19 @@
     <div>{{ job.title }}</div>
     <div>Company: {{ job.companyName }}</div>
     <div>Reference: {{ job.reference }}</div>
-    <span id="star-{{ job.id }}" class="icon-star"></span>
+    @if(showStar) {
+    <span
+      (click)="
+        !job.favorite
+          ? favoriteJobsService.setFavorite(job)
+          : removeClassAndFavorite(job)
+      "
+      id="star-{{ job.id }}"
+      class="icon-star"
+      [ngClass]="job.favorite ? 'active-star' : ''"
+    ></span>
+    }
+
     <br />
   </div>
 </ng-container>

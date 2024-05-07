@@ -1,1 +1,4 @@
-<p>favorite-job works!</p>
+<app-job
+  [allJobs]="favoriteJobsService.getFavorites()"
+  [showStar]="false"
+></app-job>

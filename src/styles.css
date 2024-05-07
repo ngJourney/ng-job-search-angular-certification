@@ -17,6 +17,6 @@ span.icon-star:hover {
     cursor: pointer;
 }
 
-.icon-star.active {
+span.active-star {
     background-color: gold;
 }

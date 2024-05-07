@@ -4,4 +4,5 @@ export interface IBaseJob {
   title: string;
   companyLogo: string;
   reference: string;
+  favorite: boolean;
 }
