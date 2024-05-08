@@ -5,7 +5,12 @@
     [src]="detailedJob.companyLogo"
     [alt]="detailedJob.companyName + ' logo'"
   />
-  <div>{{ detailedJob.companyName }} - {{ detailedJob.title }}</div>
+  <div>
+    {{ detailedJob.companyName }} -
+    {{ detailedJob.title }} @if(detailedJob.favorite) {
+    <span id="star-{{ detailedJob.id }}" class="icon-star spin"></span>
+    }
+  </div>
 </div>
 <div>
   Industries:
