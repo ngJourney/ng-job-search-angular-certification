@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IBaseJob } from '../interfaces/IBaseJob';
-import { IDetailedJob } from '../interfaces/IDetailedJob';
+import { BaseJob } from '../interfaces/BaseJob';
+import { DetailedJob } from '../interfaces/DetailedJob';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +10,11 @@ import { IDetailedJob } from '../interfaces/IDetailedJob';
 export class JobService {
   private http = inject(HttpClient);
 
-  getAllJobs(): Observable<IBaseJob[]> {
-    return this.http.get('/jobs') as Observable<IBaseJob[]>;
+  getAllJobs(): Observable<BaseJob[]> {
+    return this.http.get('/jobs') as Observable<BaseJob[]>;
   }
 
-  getDetailedJob(id: string | number): Observable<IDetailedJob> {
-    return this.http.get(`/jobs/${id}`) as Observable<IDetailedJob>;
+  getDetailedJob(id: string | number): Observable<DetailedJob> {
+    return this.http.get(`/jobs/${id}`) as Observable<DetailedJob>;
   }
 }

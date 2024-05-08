@@ -1,6 +1,6 @@
-import { IBaseJob } from './IBaseJob';
+import { BaseJob } from './BaseJob';
 
-export interface IDetailedJob extends IBaseJob {
+export interface DetailedJob extends BaseJob {
   reference: string;
   location: string;
   industries: string[];

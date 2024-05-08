@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { JobService } from '../../services/job.service';
-import { IBaseJob } from '../../interfaces/IBaseJob';
+import { BaseJob } from '../../interfaces/BaseJob';
 import { CommonModule } from '@angular/common';
 import { FavoriteJobsService } from '../../services/favorite-jobs.service';
 import { RouterModule, Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class JobComponent implements OnInit {
   protected readonly favoriteJobsService = inject(FavoriteJobsService);
   #router = inject(Router);
 
-  @Input() allJobs: IBaseJob[] = [];
+  @Input() allJobs: BaseJob[] = [];
   @Input() showStar: boolean = true;
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class JobComponent implements OnInit {
       });
   }
 
-  removeClassAndFavorite(job: IBaseJob) {
+  removeClassAndFavorite(job: BaseJob) {
     job.favorite = false;
 
     this.favoriteJobsService.removeFavorite(job);

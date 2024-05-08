@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IBaseJob } from '../interfaces/IBaseJob';
+import { BaseJob } from '../interfaces/BaseJob';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +7,7 @@ import { IBaseJob } from '../interfaces/IBaseJob';
 export class FavoriteJobsService {
   private readonly localKey = 'favoriteJobs';
 
-  getFavorites(): IBaseJob[] {
+  getFavorites(): BaseJob[] {
     const favorites = localStorage.getItem(this.localKey);
 
     if (favorites) {
@@ -17,7 +17,7 @@ export class FavoriteJobsService {
     return [];
   }
 
-  setFavorite(job: IBaseJob) {
+  setFavorite(job: BaseJob) {
     if (!this.hasFavorite(job)) {
       const favorites = this.getFavorites();
 
@@ -28,7 +28,7 @@ export class FavoriteJobsService {
     }
   }
 
-  removeFavorite(job: IBaseJob) {
+  removeFavorite(job: BaseJob) {
     if (this.hasFavorite(job)) {
       const favorites = this.getFavorites();
       const filtered = favorites.filter((value) => value.id !== job.id);
@@ -37,7 +37,7 @@ export class FavoriteJobsService {
     }
   }
 
-  hasFavorite(job: IBaseJob) {
+  hasFavorite(job: BaseJob) {
     const favorites = this.getFavorites();
 
     return favorites.find((value) => value.id === job.id) != undefined;

@@ -1,4 +1,4 @@
-export interface IBaseJob {
+export interface BaseJob {
   id: string;
   companyName: string;
   title: string;

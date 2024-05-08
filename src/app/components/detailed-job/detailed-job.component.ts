@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { JobService } from '../../services/job.service';
-import { IDetailedJob } from '../../interfaces/IDetailedJob';
+import { DetailedJob } from '../../interfaces/DetailedJob';
 import { Router, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -17,7 +17,7 @@ import { FavoriteJobsService } from '../../services/favorite-jobs.service';
 export class DetailedJobComponent {
   protected readonly job = inject(JobService);
   protected readonly activatedRoute = inject(ActivatedRoute);
-  protected detailedJob: IDetailedJob = {} as IDetailedJob;
+  protected detailedJob: DetailedJob = {} as DetailedJob;
   #favoriteJobsService = inject(FavoriteJobsService);
   #router = inject(Router);
 
