@@ -8,7 +8,7 @@ img {
   display: flex;
 }
 
-.company-title > div{
+.company-title > div {
   font-size: 2rem;
   margin: 0 0 1.5rem 1rem;
 }
