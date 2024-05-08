@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetailedJobComponent } from './detailed-job.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('DetailedJobComponent', () => {
   let component: DetailedJobComponent;
@@ -8,7 +11,19 @@ describe('DetailedJobComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetailedJobComponent],
+      imports: [DetailedJobComponent, HttpClientModule],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              params: {
+                id: '1234',
+              },
+            },
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DetailedJobComponent);

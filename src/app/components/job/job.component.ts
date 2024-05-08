@@ -30,7 +30,6 @@ export class JobComponent implements OnInit {
       .getAllJobs()
       .pipe(
         catchError(() => {
-          window.location.reload();
           return EMPTY;
         })
       )

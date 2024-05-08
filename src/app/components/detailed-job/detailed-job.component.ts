@@ -25,7 +25,6 @@ export class DetailedJobComponent {
       .getDetailedJob(this.activatedRoute.snapshot.params['id'])
       .pipe(
         catchError(() => {
-          window.location.reload;
           return EMPTY;
         }),
         map((value) => {
