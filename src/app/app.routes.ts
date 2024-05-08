@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { JobComponent } from './components/job/job.component';
-import { DetailedJobComponent } from './components/detailed-job/detailed-job.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +20,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/favorite-job/favorite-job.component').then(
         (module) => module.FavoriteJobComponent
+      ),
+  },
+  {
+    path: 'error',
+    loadComponent: () =>
+      import('./components/error/error.component').then(
+        (module) => module.ErrorComponent
       ),
   },
   { path: '**', redirectTo: '/jobs' },
