@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { JobService } from '../../services/job.service';
 import { IDetailedJob } from '../../interfaces/IDetailedJob';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { EMPTY, catchError, map } from 'rxjs';
@@ -19,12 +19,15 @@ export class DetailedJobComponent {
   protected readonly activatedRoute = inject(ActivatedRoute);
   protected detailedJob: IDetailedJob = {} as IDetailedJob;
   #favoriteJobsService = inject(FavoriteJobsService);
+  #router = inject(Router);
 
   constructor() {
     this.job
       .getDetailedJob(this.activatedRoute.snapshot.params['id'])
       .pipe(
         catchError(() => {
+          this.#router.navigate(['error']);
+
           return EMPTY;
         }),
         map((value) => {

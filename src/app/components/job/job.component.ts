@@ -3,7 +3,7 @@ import { JobService } from '../../services/job.service';
 import { IBaseJob } from '../../interfaces/IBaseJob';
 import { CommonModule } from '@angular/common';
 import { FavoriteJobsService } from '../../services/favorite-jobs.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { EMPTY, catchError } from 'rxjs';
 
 @Component({
@@ -16,6 +16,8 @@ import { EMPTY, catchError } from 'rxjs';
 export class JobComponent implements OnInit {
   protected readonly job = inject(JobService);
   protected readonly favoriteJobsService = inject(FavoriteJobsService);
+  #router = inject(Router);
+
   @Input() allJobs: IBaseJob[] = [];
   @Input() showStar: boolean = true;
 
@@ -30,6 +32,8 @@ export class JobComponent implements OnInit {
       .getAllJobs()
       .pipe(
         catchError(() => {
+          this.#router.navigate(['error']);
+
           return EMPTY;
         })
       )
