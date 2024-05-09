@@ -10,11 +10,11 @@ import { DetailedJob } from '../interfaces/DetailedJob';
 export class JobService {
   private http = inject(HttpClient);
 
-  getAllJobs(): Observable<BaseJob[]> {
-    return this.http.get('/jobs') as Observable<BaseJob[]>;
+  getAllJobs() {
+    return this.http.get<BaseJob[]>('/jobs');
   }
 
-  getDetailedJob(id: string | number): Observable<DetailedJob> {
-    return this.http.get(`/jobs/${id}`) as Observable<DetailedJob>;
+  getDetailedJob(id: string | number) {
+    return this.http.get<DetailedJob>(`/jobs/${id}`);
   }
 }
