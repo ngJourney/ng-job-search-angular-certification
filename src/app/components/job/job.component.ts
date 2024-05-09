@@ -14,9 +14,9 @@ import { EMPTY, catchError, map } from 'rxjs';
   styleUrl: './job.component.css',
 })
 export class JobComponent implements OnInit {
-  protected readonly job = inject(JobService);
   protected readonly favoriteJobsService = inject(FavoriteJobsService);
-  #router = inject(Router);
+  protected readonly job = inject(JobService);
+  private readonly router = inject(Router);
 
   @Input() allJobs: BaseJob[] = [];
   @Input() showStar: boolean = true;
@@ -32,7 +32,7 @@ export class JobComponent implements OnInit {
       .getAllJobs()
       .pipe(
         catchError(() => {
-          this.#router.navigate(['error']);
+          this.router.navigate(['error']);
 
           return EMPTY;
         }),

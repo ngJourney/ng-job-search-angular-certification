@@ -15,25 +15,25 @@ import { FavoriteJobsService } from '../../services/favorite-jobs.service';
   styleUrl: './detailed-job.component.css',
 })
 export class DetailedJobComponent {
-  protected readonly job = inject(JobService);
   protected readonly activatedRoute = inject(ActivatedRoute);
   protected detailedJob: DetailedJob = {} as DetailedJob;
-  #favoriteJobsService = inject(FavoriteJobsService);
-  #router = inject(Router);
+  protected readonly job = inject(JobService);
+  private readonly favoriteJobsService = inject(FavoriteJobsService);
+  private readonly router = inject(Router);
 
   constructor() {
     this.job
       .getDetailedJob(this.activatedRoute.snapshot.params['id'])
       .pipe(
         catchError(() => {
-          this.#router.navigate(['error']);
+          this.router.navigate(['error']);
 
           return EMPTY;
         }),
         map((value) => {
           return {
             ...value,
-            favorite: this.#favoriteJobsService.hasFavorite(value),
+            favorite: this.favoriteJobsService.hasFavorite(value),
           };
         })
       )
