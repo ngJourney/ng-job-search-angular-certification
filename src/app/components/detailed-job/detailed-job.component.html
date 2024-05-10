@@ -14,11 +14,11 @@
 </div>
 <div>
   Industries:
-  <span [innerHTML]="detailedJob.industries"></span>
+  <span [innerHTML]="detailedJob.industries | join"></span>
 </div>
 <div>
   Types:
-  <span [innerHTML]="detailedJob.types"></span>
+  <span [innerHTML]="detailedJob.types | join"></span>
 </div>
 <div>Published: {{ detailedJob.publishDate | date : "shortDate" }}</div>
 <div>Location: {{ detailedJob.location }}</div>

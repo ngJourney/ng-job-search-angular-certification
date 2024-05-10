@@ -6,11 +6,12 @@ import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { EMPTY, catchError, map } from 'rxjs';
 import { FavoriteJobsService } from '../../services/favorite-jobs.service';
+import { JoinPipe } from '../../pipes/join.pipe';
 
 @Component({
   selector: 'app-detailed-job',
   standalone: true,
-  imports: [RouterModule, DatePipe],
+  imports: [RouterModule, DatePipe, JoinPipe],
   templateUrl: './detailed-job.component.html',
   styleUrl: './detailed-job.component.css',
 })
