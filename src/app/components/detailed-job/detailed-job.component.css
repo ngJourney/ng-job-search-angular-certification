@@ -16,3 +16,7 @@ img {
 .description {
   max-width: 800px;
 }
+
+div {
+  margin-bottom: 5px;
+}
